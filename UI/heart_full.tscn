@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cflu2qniavav8"]
+
+[ext_resource type="Texture2D" uid="uid://qe5lkvaf6eu2" path="res://art/ui/heart_full.png" id="1_vtjrq"]
+
+[node name="heart_full" type="TextureRect"]
+texture = ExtResource("1_vtjrq")
+expand_mode = 2

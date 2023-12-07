@@ -1,0 +1,11 @@
+res://fonts/default_bus_layout.tres
+res://Main.tscn
+res://UI/button-theme.tres
+res://player/player.tscn
+res://mobs/mob.tscn
+res://UI/music_player.tscn
+res://UI/user_interface.tscn
+res://UI/heart_full.tscn
+res://UI/heart_empty.tscn
+res://Recorder/recorder.tscn
+res://UI/Begin.tscn

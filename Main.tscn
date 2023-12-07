@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0yet283677oy"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_8brry"]
+[ext_resource type="PackedScene" uid="uid://cpgyklq3rebd" path="res://player/player.tscn" id="1_cwert"]
+[ext_resource type="PackedScene" uid="uid://b133ug5suvl6k" path="res://mobs/mob.tscn" id="2_sq2pn"]
+[ext_resource type="PackedScene" uid="uid://duyvbtfa7pba5" path="res://UI/user_interface.tscn" id="4_4x3j1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dtnhx"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vkwe"]
+disable_ambient_light = true
+albedo_color = Color(0.976471, 0.858824, 0.941176, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cgf30"]
+material = SubResource("StandardMaterial3D_4vkwe")
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k50lv"]
+albedo_color = Color(0.898039, 0.447059, 0.027451, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fg5hv"]
+material = SubResource("StandardMaterial3D_k50lv")
+
+[sub_resource type="Curve3D" id="Curve3D_77mhx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -29, -3, -27, 0, 0, 0, 0, 0, 0, 30, -2, -28, 0, 0, 0, 0, 0, 0, 29, 4, 27, 0, 0, 0, 0, 0, 0, -30, 1, 29, 0, 0, 0, 0, 0, 0, -29, -1, -29),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8brry")
+mob_scene = ExtResource("2_sq2pn")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_dtnhx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_cgf30")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 27.2842, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_cwert")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+projection = 1
+size = 19.0
+far = 100.0
+
+[node name="Cylinder" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -14)
+mesh = SubResource("CylinderMesh_fg5hv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 15)
+mesh = SubResource("CylinderMesh_fg5hv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cylinder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 15)
+mesh = SubResource("CylinderMesh_fg5hv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cylinder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -14)
+mesh = SubResource("CylinderMesh_fg5hv")
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_77mhx")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(0.0169467, -0.0169418, -0.999711, 9.31321e-10, 0.999856, -0.0169443, 0.999855, 0.00028715, 0.0169443, -29, -3, -27)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="UserInterface" parent="." instance=ExtResource("4_4x3j1")]
+offset_right = 1932.0
+offset_bottom = 1088.0
+
+[node name="RebornPosition" type="Marker3D" parent="."]
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="enter_screen" from="Player" to="." method="_on_player_enter_screen"]
+[connection signal="exit_screen" from="Player" to="." method="_on_player_exit_screen"]
+[connection signal="hit" from="Player" to="UserInterface" method="_on_player_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="cancle_pressed" from="UserInterface" to="." method="_on_user_interface_cancle_pressed"]
+[connection signal="player_exited" from="UserInterface" to="." method="_on_user_interface_player_exited"]

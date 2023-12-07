@@ -1,0 +1,10 @@
+res://fonts/default_bus_layout.tres::4f36a013e924beace8dc9bdaad6baf1b::1701864039::res://.godot/exported/133200997/export-2a1c9f9f27a589dc9d99f779bce89deb-default_bus_layout.res
+res://mobs/mob.tscn::0ebb27a18d480c50b7bcf24824c8d72a::1701864217::res://.godot/exported/133200997/export-25ffa13167d946a5ff6db6a3e09fa828-mob.scn
+res://player/player.tscn::43266f20401d5da347f00519cc88b2f5::1701864217::res://.godot/exported/133200997/export-753d15e03e0182f9d550ac833b42bb41-player.scn
+res://UI/music_player.tscn::aae1c769413d5acb7145698c9cff80cb::1701864217::res://.godot/exported/133200997/export-cf9e0595de8550a108b9bc5e169378e4-music_player.scn
+res://UI/user_interface.tscn::c000839b9de05f6ce67ccac532374812::1701864237::res://.godot/exported/133200997/export-7c854992387b81a4529cfc37acd0d2a9-user_interface.scn
+res://default_env.tres::aa7eda46b60d76cd14e2d0c564de3f36::1701492135::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
+res://Main.tscn::78e2e63febf5745ed42785a55ff85186::1701864217::res://.godot/exported/133200997/export-bcb0d2eb5949c52b6a65bfe9de3e985b-Main.scn
+res://UI/heart_empty.tscn::b54d6c0ffd4f9bd915b2f599f8ed7fa8::1701864217::res://.godot/exported/133200997/export-8dee9ef292ea803f88a90a4e73d40287-heart_empty.scn
+res://UI/heart_full.tscn::9b6cb869c8610b169b7c985b49a8c14f::1701864217::res://.godot/exported/133200997/export-07857991b039a869e133b028fc1ce566-heart_full.scn
+res://UI/hp_bar.tscn::dc5981e0f69a93dd0398c0872350ad4c::1701601921::res://.godot/exported/133200997/export-e97e6da8d3c0bfd6ee39d432a2b9b37a-hp_bar.scn
