@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://caxol7ouwr4dv"]
+[gd_scene load_steps=6 format=3 uid="uid://caxol7ouwr4dv"]
 
 [ext_resource type="Script" path="res://UI/Begin.gd" id="1_nh6vx"]
 [ext_resource type="Theme" uid="uid://bv3q3h0puxumi" path="res://UI/button-theme.tres" id="2_5d4ka"]
+[ext_resource type="Script" path="res://UI/CharacterBody2D.gd" id="3_i7jj7"]
+[ext_resource type="Texture2D" uid="uid://qe5lkvaf6eu2" path="res://art/ui/heart_full.png" id="3_iva3n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmtv8"]
 
 [node name="Begin" type="Node2D"]
 script = ExtResource("1_nh6vx")
@@ -10,15 +14,6 @@ script = ExtResource("1_nh6vx")
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.972549, 0.960784, 0.858824, 1)
-
-[node name="StartButton" type="Button" parent="ColorRect"]
-layout_mode = 0
-offset_left = 880.0
-offset_top = 568.0
-offset_right = 1072.0
-offset_bottom = 648.0
-theme = ExtResource("2_5d4ka")
-text = "Start"
 
 [node name="ExitButton" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -29,13 +24,34 @@ offset_bottom = 1024.0
 theme = ExtResource("2_5d4ka")
 text = "X"
 
-[node name="RecordButton" type="Button" parent="ColorRect"]
-layout_mode = 0
-offset_left = 880.0
-offset_top = 712.0
-offset_right = 1072.0
-offset_bottom = 792.0
-theme = ExtResource("2_5d4ka")
-text = "Record"
+[node name="StartZone" type="Area2D" parent="ColorRect"]
 
-[connection signal="pressed" from="ColorRect/StartButton" to="." method="_on_start_button_pressed"]
+[node name="ColorRect" type="ColorRect" parent="ColorRect/StartZone"]
+offset_left = 264.0
+offset_top = 344.0
+offset_right = 552.0
+offset_bottom = 640.0
+color = Color(1, 1, 0.490196, 1)
+
+[node name="RecordZone" type="Area2D" parent="ColorRect"]
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/RecordZone"]
+offset_left = 1336.0
+offset_top = 344.0
+offset_right = 1624.0
+offset_bottom = 640.0
+color = Color(1, 1, 0.490196, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_i7jj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_fmtv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("3_iva3n")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(976, 424)
+
+[connection signal="pressed" from="ColorRect/ExitButton" to="." method="_on_exit_button_pressed"]

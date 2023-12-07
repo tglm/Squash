@@ -1,14 +1,15 @@
 
 class_name Record
 
-var score:int = 0
-var game_sec:int = 0
-var record_time:Dictionary
+static var data = {
+	"score": 0,
+	"game_sec": 0,
+	"record_time":{}
+}
 
-static func add(scoree,game_secc) -> Record:
+static func get_data(score,game_sec) -> Dictionary:
 	var r = Record.new()
-	r.score = scoree
-	r.game_sec = game_secc
-	r.record_time = Time.get_datetime_dict_from_system()
-	return r
-	
+	data["score"] = score
+	data["game_sec"] = game_sec
+	data["record_time"] = Time.get_datetime_dict_from_system()
+	return data

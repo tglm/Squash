@@ -1,6 +1,13 @@
+ColorRect
+Area2D
+Marker2D
+Sprite2D
+CollisionShape2D
+CharacterBody2D
+Camera3D
+Camera2D
 Button
 Label
-ColorRect
 AudioStreamPlayer
 AudioStreamPlayer2D
 Timer
@@ -18,7 +25,6 @@ Path3D
 MeshInstance3D
 Node3D
 CharacterBody3D
-Camera3D
 DirectionalLight3D
 DirectionalLight2D
 StaticBody3D

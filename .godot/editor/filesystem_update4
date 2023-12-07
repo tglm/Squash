@@ -12,3 +12,5 @@ res://UI/Begin.tscn
 res://Recorder/Record.gd
 res://Recorder/record.json
 res://Recorder/Recorder.gd
+res://UI/Begin.gd
+res://UI/CharacterBody2D.gd

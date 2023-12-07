@@ -1,1 +1,53 @@
-"<RefCounted#-9223371967413877587>"
+{
+	"game_sec": 2,
+	"record_time": {
+		"day": 7,
+		"dst": false,
+		"hour": 22,
+		"minute": 52,
+		"month": 12,
+		"second": 47,
+		"weekday": 4,
+		"year": 2023
+	},
+	"score": 0
+}{
+	"game_sec": 3,
+	"record_time": {
+		"day": 7,
+		"dst": false,
+		"hour": 22,
+		"minute": 52,
+		"month": 12,
+		"second": 48,
+		"weekday": 4,
+		"year": 2023
+	},
+	"score": 0
+}{
+	"game_sec": 4,
+	"record_time": {
+		"day": 7,
+		"dst": false,
+		"hour": 22,
+		"minute": 52,
+		"month": 12,
+		"second": 49,
+		"weekday": 4,
+		"year": 2023
+	},
+	"score": 0
+}{
+	"game_sec": 5,
+	"record_time": {
+		"day": 7,
+		"dst": false,
+		"hour": 22,
+		"minute": 52,
+		"month": 12,
+		"second": 50,
+		"weekday": 4,
+		"year": 2023
+	},
+	"score": 0
+}
