@@ -11,3 +11,4 @@ res://Recorder/recorder.tscn
 res://UI/Begin.tscn
 res://Recorder/Record.gd
 res://Recorder/record.json
+res://Recorder/Recorder.gd

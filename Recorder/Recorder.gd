@@ -7,4 +7,3 @@ static func record(score,game_time_sec) -> void:
 	var file = FileAccess.open("res://Recorder/record.json", FileAccess.WRITE)
 	var json = JSON.stringify(rec,"\t")
 	file.store_string(json)
-
