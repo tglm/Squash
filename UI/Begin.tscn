@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://caxol7ouwr4dv"]
+[gd_scene load_steps=8 format=3 uid="uid://caxol7ouwr4dv"]
 
 [ext_resource type="Script" path="res://UI/Begin.gd" id="1_nh6vx"]
 [ext_resource type="Theme" uid="uid://bv3q3h0puxumi" path="res://UI/button-theme.tres" id="2_5d4ka"]
 [ext_resource type="Script" path="res://UI/CharacterBody2D.gd" id="3_i7jj7"]
 [ext_resource type="Texture2D" uid="uid://qe5lkvaf6eu2" path="res://art/ui/heart_full.png" id="3_iva3n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cf4do"]
+font_size = 48
+font_color = Color(0.0705882, 0.117647, 0.219608, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmyg0"]
+size = Vector2(285, 297)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmtv8"]
 
@@ -33,6 +40,22 @@ offset_right = 552.0
 offset_bottom = 640.0
 color = Color(1, 1, 0.490196, 1)
 
+[node name="Label" type="Label" parent="ColorRect/StartZone"]
+offset_left = 312.0
+offset_top = 416.0
+offset_right = 504.0
+offset_bottom = 560.0
+text = "Start"
+label_settings = SubResource("LabelSettings_cf4do")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/StartZone"]
+position = Vector2(409.5, 491.5)
+shape = SubResource("RectangleShape2D_rmyg0")
+
+[node name="StartTimer" type="Timer" parent="ColorRect/StartZone"]
+
 [node name="RecordZone" type="Area2D" parent="ColorRect"]
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect/RecordZone"]
@@ -41,6 +64,22 @@ offset_top = 344.0
 offset_right = 1624.0
 offset_bottom = 640.0
 color = Color(1, 1, 0.490196, 1)
+
+[node name="Label" type="Label" parent="ColorRect/RecordZone"]
+offset_left = 1384.0
+offset_top = 416.0
+offset_right = 1576.0
+offset_bottom = 560.0
+text = "record"
+label_settings = SubResource("LabelSettings_cf4do")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/RecordZone"]
+position = Vector2(1480, 496)
+shape = SubResource("RectangleShape2D_rmyg0")
+
+[node name="RecordTimer" type="Timer" parent="ColorRect/RecordZone"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("3_i7jj7")
@@ -55,3 +94,7 @@ texture = ExtResource("3_iva3n")
 position = Vector2(976, 424)
 
 [connection signal="pressed" from="ColorRect/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="area_entered" from="ColorRect/StartZone" to="." method="_on_start_zone_area_entered"]
+[connection signal="timeout" from="ColorRect/StartZone/StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="area_entered" from="ColorRect/RecordZone" to="." method="_on_record_zone_area_entered"]
+[connection signal="timeout" from="ColorRect/RecordZone/RecordTimer" to="." method="_on_record_timer_timeout"]

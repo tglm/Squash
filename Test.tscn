@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cce7l12ccqb5q"]
+
+[ext_resource type="PackedScene" uid="uid://durufik8amp2t" path="res://art/model/Knight.glb" id="1_ems5v"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Knight" parent="." instance=ExtResource("1_ems5v")]
